@@ -29,7 +29,7 @@ export default {
 
       Search.find({ service, id }).then(json => {
         if (json.Code && json.Code === '404') {
-          console.error(`[${json.Code}] ${json.Message}`);
+          alert(`[${json.Code}] ${json.Message}`);
           return;
         }
 

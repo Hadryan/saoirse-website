@@ -9,7 +9,7 @@
     "build": "node build/build.js",
     "test": "",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "start": "npm run build && http-server ./dist -p 3000"
+    "deploy": "npm run build && git push dokku master"
   },
   "engines": {
     "node": "6.5.0"

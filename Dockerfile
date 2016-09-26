@@ -1,1 +1,2 @@
-FROM node:onbuild
+FROM golang:latest
+RUN go run server.go
