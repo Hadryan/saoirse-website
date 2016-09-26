@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "test": "",
+    "start": "node server",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
     "deploy": "npm run build && git commit -am 'Deployment' && git push dokku master"
   },
@@ -16,9 +16,11 @@
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
+    "express": "^4.14.0",
+    "http-server": "latest",
+    "serve-static": "^1.11.1",
     "vue": "^1.0.21",
-    "whatwg-fetch": "^1.0.0",
-    "http-server": "latest"
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
