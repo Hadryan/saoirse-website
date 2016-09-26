@@ -1,0 +1,26 @@
+<div class="result-card" v-if="canRender">
+  <figure class="background" tabindex="-1">
+    <img v-bind:srcset="imageSourceSet" alt="Background image for search result" />
+  </figure>
+
+  <figure class="cover">
+    <img v-bind:srcset="imageSourceSet" alt="Image for search result" />
+  </figure>
+
+  <div class="right">
+    <div class="metadata">
+      <span class="name">{{search.name}}</span>
+      <span class="artist">{{artistList}}</span>
+      <em>Playback powered by Spotify</em>
+    </div>
+
+    <div class="controls">
+      <button v-on:click="toggleAudioPlayback">
+        <i class="material-icons">{{currentPlayButtonIcon}}</i>
+      </button>
+      <div class="progress-bar">
+        <div class="bar" v-bind:style="progressStyle"></div>
+      </div>
+    </div>
+  </div>
+</div>

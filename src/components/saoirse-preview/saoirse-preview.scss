@@ -1,0 +1,125 @@
+$size: 150px;
+
+.result-card {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: $size;
+  margin: 2rem auto;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+figure {
+  margin: 0;
+  max-height: 100%;
+  overflow: hidden;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 0.2rem;
+  overflow: hidden;
+  border-radius: 0.2rem;
+
+  .bar {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+button {
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  border: 0;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+
+  i {
+    font-size: 24pt;
+    margin-left: -0.4rem;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  padding: 1rem;
+}
+
+.right {
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.metadata {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 14pt;
+  padding: 1rem;
+
+  .name {
+    padding-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .artist {
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+  }
+
+  em {
+    font-size: 0.5em;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+  }
+}
+
+.cover {
+  width: $size;
+  height: $size;
+  z-index: 1;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+  background-color: black;
+
+  img {
+    transform: translateY(-50%);
+    filter: blur(10px);
+    width: 200%;
+    height: $size * 2;
+    opacity: 0.65;
+  }
+}

@@ -1,0 +1,49 @@
+<div class="search-results" v-if="search">
+  <saoirse-preview v-bind:id="search.spotify_id"></saoirse-preview>
+
+  <section>
+    <header>
+      <h2>Track IDs</h2>
+    </header>
+
+    <table>
+      <thead>
+        <th></th>
+        <th>ID</th>
+        <th>Link</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TIDAL</td>
+          <td>{{search.tidal_id}}</td>
+          <td><a href="https://listen.tidal.com/track/{{search.tidal_id}}?play=true" target="_blank">Play on TIDAL</a></td>
+        </tr>
+        <tr>
+          <td>Spotify</td>
+          <td>{{search.spotify_id}}</td>
+          <td><a href="https://play.spotify.com/track/{{search.spotify_id}}?play=true" target="_blank">Play on Spotify</a></td>
+        </tr>
+        <tr>
+          <td>Apple Music / iTunes</td>
+          <td>{{search.itunes_id}}</td>
+          <td><em>iTunes does not support direct linking</em></td>
+        </tr>
+        <tr>
+          <td>ISRC</td>
+          <td>{{search.isrc_id}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="embeds">
+    <header>
+      <h2>Embeds</h2>
+    </header>
+
+    <apple-music-embed v-bind:id="search.itunes_id"></apple-music-embed>
+    <tidal-embed v-bind:id="search.tidal_id"></tidal-embed>
+    <spotify-embed v-bind:id="search.spotify_id"></spotify-embed>
+  </div>
+</div>
