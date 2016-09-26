@@ -3,8 +3,7 @@
 FROM golang:latest
 
 # Copy the local package files to the container's workspace.
-ADD dist /go/src/Saoirse/website
-ADD main.go /go/src/Saoirse/website
+ADD . /go/src/Saoirse/website
 
 # Build the command inside the container.
 # (You may fetch or manage dependencies here,
