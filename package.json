@@ -9,10 +9,10 @@
     "build": "node build/build.js",
     "test": "",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "start" "npm run build && http-server -p 3000"
+    "start": "npm run build && http-server ./dist -p 3000"
   },
   "engines": {
-    "node" "6.5.0"
+    "node": "6.5.0"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
