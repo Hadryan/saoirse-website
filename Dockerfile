@@ -3,7 +3,7 @@
 FROM golang:latest
 
 # Copy the local package files to the container's workspace.
-COPY main.go /go/src/Saoirse/website/main.go
+COPY . /go/src/Saoirse/website
 
 # Build the command inside the container.
 # (You may fetch or manage dependencies here,
