@@ -50,13 +50,20 @@ export default {
     },
 
     find (options) {
-      const { service, id } = options;
-
       Search.find(options).then(json => {
         if (json.Code && json.Code === '404') {
           alert(`[${json.Code}] ${json.Message}`);
           return;
         }
+
+        const { service, id } = options;
+
+        if (id && id !== '') {
+          window.history.pushState({ service, id }, `/track/${service}/${id}`, `/track/${service}/${id}`);
+        }
+
+        this.service = service;
+        this.id = id;
 
         EventEmitter.$emit('update-search-result', json);
       });
