@@ -8,4 +8,4 @@ let port = process.env.PORT || 3000;
 app.use(serveStatic(__dirname + '/dist'));
 app.listen(port);
 
-console.log('Running on ' + port);
+console.log('Running on http://localhost:' + port);

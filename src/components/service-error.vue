@@ -1,6 +1,6 @@
 <template>
   <div class="message">
-    ${service} doesn't seem to have this track. :(
+    Couln't find this track on {{service}}.
   </div>
 </template>
 
@@ -9,3 +9,12 @@
     props: ['service']
   }
 </script>
+
+<style lang="scss" scoped>
+  .message {
+    background-color: #eee;
+    color: black;
+    padding: 1rem;
+    font-size: .8rem;
+  }
+</style>
