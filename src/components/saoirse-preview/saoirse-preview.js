@@ -59,8 +59,6 @@ export default {
     }
   },
   mounted () {
-    console.debug('saoirse-preview mounted');
-
     this.audio = document.createElement('audio');
     this.audio.preload = true;
     this.audio.onplay = this.updateButtonState;

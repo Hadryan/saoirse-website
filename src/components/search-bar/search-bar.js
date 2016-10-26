@@ -24,17 +24,35 @@ export default {
   },
   methods: {
     parseLocationHash () {
-      const { hash } = document.location;
+      const supportedServices = ['spotify', 'isrc', 'itunes', 'apple-music', 'tidal'];
+      const supportedTypes = ['track'];
 
-      console.debug(hash);
+      if (!document.location.pathname || document.location.pathname.indexOf('/') === -1) {
+        return;
+      }
+
+      const pathArray = document.location.pathname.split('/');
+
+      const type = pathArray[1];
+      let service = pathArray[2];
+      const id = pathArray[3];
+
+      const serviceSupported = supportedServices.indexOf(service) !== -1;
+      const typeSupported = supportedTypes.indexOf(type) !== -1;
+
+      if (service === 'apple-music') {
+        service = 'itunes';
+      }
+
+      if (serviceSupported && typeSupported) {
+        this.find({ service, id });
+      }
     },
 
-    search (event) {
-      event.preventDefault();
+    find (options) {
+      const { service, id } = options;
 
-      const { service, id } = this;
-
-      Search.find({ service, id }).then(json => {
+      Search.find(options).then(json => {
         if (json.Code && json.Code === '404') {
           alert(`[${json.Code}] ${json.Message}`);
           return;
@@ -42,6 +60,14 @@ export default {
 
         EventEmitter.$emit('update-search-result', json);
       });
+    },
+
+    search (event) {
+      event.preventDefault();
+      this.find(this);
     }
+  },
+  mounted () {
+    this.parseLocationHash();
   }
 }
