@@ -1,15 +1,19 @@
 import Search from '../../search';
+import eventEmitter from '../../event-emitter';
 
 const playingIcon = 'pause';
 const pausedIcon = 'play_arrow';
 
 export default {
-  props: ['id'],
+  props: ['title'],
   data () {
     return {
-      search: undefined,
       currentPlayButtonIcon: 'play_arrow',
-      progressPercent: 100
+      progressPercent: 100,
+      artistList: undefined,
+      imageSourceSet: undefined,
+      songName: undefined,
+      spotifyId: undefined
     };
   },
   methods: {
@@ -25,45 +29,46 @@ export default {
 
       this.progressPercent = percent;
     },
-    fetchData () {
-      Search.getSpotifyTrack(this.id).then(json => {
-        this.search = json;
+    updateContent () {
+      if (!this.title || this.songName && this.title === this.spotifyId) {
+        return;
+      }
+
+      Search.getSpotifyTrack(this.title).then(json => {
         this.currentPlayButtonIcon = pausedIcon;
         this.progressPercent = 100;
         this.audio.src = json.preview_url;
+
+        this.songName = json.name;
+        this.spotifyId = this.title;
+
+        this.artistList = json.artists.map(artist => {
+          return artist.name;
+        }).join(', ');
+
+        this.imageSourceSet = json.album.images.map(img => {
+          return `${img.url} ${img.width}w`;
+        }).join(', ');
       });
     }
   },
   computed: {
-    canRender () {
-      return this.search && this.id;
-    },
-    imageSourceSet () {
-      return this.search.album.images.map(img => {
-        return `${img.url} ${img.width}w`;
-      }).join(', ');
-    },
-    artistList () {
-      return this.search.artists.map(artist => {
-        return artist.name;
-      }).join(', ');
-    },
     progressStyle () {
       const value = Math.abs(100 - this.progressPercent);
       return `transform: translateX(-${value}%)`;
     }
   },
-  ready () {
+  mounted () {
+    console.debug('saoirse-preview mounted');
+
     this.audio = document.createElement('audio');
     this.audio.preload = true;
     this.audio.onplay = this.updateButtonState;
     this.audio.onpause = this.updateButtonState;
     this.audio.ontimeupdate = this.progessUpdate;
 
-    this.fetchData();
+    this.updateContent();
 
-    this.$watch('id', () => {
-      this.fetchData();
-    });
+    this.$watch('title', () => this.updateContent())
   }
 }

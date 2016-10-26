@@ -1,4 +1,4 @@
-<div class="result-card" v-if="canRender">
+<div class="result-card">
   <figure class="background" tabindex="-1">
     <img v-bind:srcset="imageSourceSet" alt="Background image for search result" />
   </figure>
@@ -9,7 +9,7 @@
 
   <div class="right">
     <div class="metadata">
-      <span class="name">{{search.name}}</span>
+      <span class="name">{{songName}}</span>
       <span class="artist">{{artistList}}</span>
       <em>Playback powered by Spotify</em>
     </div>

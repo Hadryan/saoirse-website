@@ -1,5 +1,5 @@
 <div class="search-results" v-if="search">
-  <saoirse-preview v-bind:id="search.spotify_id"></saoirse-preview>
+  <SaoirsePreview v-bind:title="search.spotify_id"></SaoirsePreview>
 
   <section>
     <header>
@@ -16,12 +16,12 @@
         <tr>
           <td>TIDAL</td>
           <td>{{search.tidal_id}}</td>
-          <td><a href="https://listen.tidal.com/track/{{search.tidal_id}}?play=true" target="_blank">Play on TIDAL</a></td>
+          <td><a v-bind:href="tidalUrl" target="_blank">Play on TIDAL</a></td>
         </tr>
         <tr>
           <td>Spotify</td>
           <td>{{search.spotify_id}}</td>
-          <td><a href="https://play.spotify.com/track/{{search.spotify_id}}?play=true" target="_blank">Play on Spotify</a></td>
+          <td><a v-bind:href="spotifyUrl" target="_blank">Play on Spotify</a></td>
         </tr>
         <tr>
           <td>Apple Music / iTunes</td>
@@ -42,8 +42,8 @@
       <h2>Embeds</h2>
     </header>
 
-    <apple-music-embed v-bind:id="search.itunes_id"></apple-music-embed>
-    <tidal-embed v-bind:id="search.tidal_id"></tidal-embed>
-    <spotify-embed v-bind:id="search.spotify_id"></spotify-embed>
+    <AppleMusicEmbed v-bind:id="search.itunes_id"></AppleMusicEmbed>
+    <TidalEmbed v-bind:id="search.tidal_id"></TidalEmbed>
+    <SpotifyEmbed v-bind:id="search.spotify_id"></SpotifyEmbed>
   </div>
 </div>

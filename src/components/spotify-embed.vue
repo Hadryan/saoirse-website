@@ -1,6 +1,8 @@
 <template>
-  <iframe v-bind:src="src" width="100%" height="80px" frameborder="0" allowtransparency="true" v-if="validId"></iframe>
-  <service-error service="Spotify" v-if="!validId"></service-error>
+  <div class="spotify-embed">
+    <iframe v-bind:src="src" width="100%" height="80px" frameborder="0" allowtransparency="true" v-if="validId"></iframe>
+    <service-error service="Spotify" v-if="!validId"></service-error>
+  </div>
 </template>
 
 <script>

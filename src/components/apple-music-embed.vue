@@ -1,6 +1,8 @@
 <template>
-  <iframe v-bind:src="src" height="110px" width="100%" frameborder="0" v-if="validId"></iframe>
-  <service-error service="Apple Music" v-if="!validId"></service-error>
+  <div class="apple-music-embed">
+    <iframe v-bind:src="src" height="110px" width="100%" frameborder="0" v-if="validId"></iframe>
+    <service-error service="Apple Music" v-if="!validId"></service-error>
+  </div>
 </template>
 
 <script>

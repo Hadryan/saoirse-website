@@ -1,4 +1,5 @@
 import Search from '../../search';
+import EventEmitter from '../../event-emitter';
 
 export default {
   data () {
@@ -22,6 +23,12 @@ export default {
     }
   },
   methods: {
+    parseLocationHash () {
+      const { hash } = document.location;
+
+      console.debug(hash);
+    },
+
     search (event) {
       event.preventDefault();
 
@@ -33,7 +40,7 @@ export default {
           return;
         }
 
-        this.$dispatch('update-search-result', json);
+        EventEmitter.$emit('update-search-result', json);
       });
     }
   }

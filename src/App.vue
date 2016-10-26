@@ -1,11 +1,11 @@
 <template>
-  <div id="app">
+  <div class="app">
     <h1>Saoirse</h1>
     <p>
       Saoirse is the irish word for "freedom". This tool help you find your favourite tracks on other music streaming services. Free the music!
     </p>
-    <search-bar></search-bar>
-    <search-results></search-results>
+    <SearchBar></SearchBar>
+    <SearchResults></SearchResults>
   </div>
 </template>
 
@@ -17,11 +17,6 @@ export default {
   components: {
     SearchBar,
     SearchResults
-  },
-  events: {
-    'update-search-result': function (json) {
-      this.$broadcast('update-search-result', json);
-    }
   }
 }
 </script>
@@ -36,7 +31,7 @@ body {
   background-color: #eee;
 }
 
-#app {
+.app {
   max-width: 800px;
   margin: 0 auto;
 }
