@@ -2,6 +2,7 @@ import SaoirsePreview from '../saoirse-preview/saoirse-preview.vue';
 import AppleMusicEmbed from '../apple-music-embed';
 import TidalEmbed from '../tidal-embed';
 import SpotifyEmbed from '../spotify-embed';
+import DeezerEmbed from '../deezer-embed';
 import eventEmitter from '../../event-emitter';
 
 export default {
@@ -9,7 +10,8 @@ export default {
     SaoirsePreview,
     AppleMusicEmbed,
     TidalEmbed,
-    SpotifyEmbed
+    SpotifyEmbed,
+    DeezerEmbed
   },
   data () {
     return {
