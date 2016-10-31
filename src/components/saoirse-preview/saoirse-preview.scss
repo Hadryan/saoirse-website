@@ -1,10 +1,8 @@
-$size: 150px;
-
 .result-card {
   position: relative;
   display: flex;
+  flex-flow: column nowrap;
   overflow: hidden;
-  height: $size;
   margin: 2rem auto;
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -12,11 +10,11 @@ $size: 150px;
 
 figure {
   margin: 0;
-  max-height: 100%;
   overflow: hidden;
+  position: relative;
 
   img {
-    height: 100%;
+    height: auto;
     width: 100%;
   }
 }
@@ -24,14 +22,48 @@ figure {
 .progress-bar {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  height: 0.2rem;
+  height: 4px;
   overflow: hidden;
   border-radius: 0.2rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
 
   .bar {
     height: 100%;
     width: 100%;
     background-color: rgba(255, 255, 255, 1);
+  }
+}
+
+.playback-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: white;
+  z-index: 99;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+
+  transition: opacity 250ms ease;
+
+  i {
+    padding: 0;
+    margin: 0;
   }
 }
 
@@ -53,13 +85,6 @@ button {
   }
 }
 
-.controls {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  padding: 1rem;
-}
-
 .right {
   color: white;
   flex: 1;
@@ -73,17 +98,19 @@ button {
   flex: 1;
   flex-direction: column;
   font-size: 14pt;
-  padding: 1rem;
+  padding: 3rem 3rem 6rem;
 
   .name {
     padding-bottom: 0.4rem;
     font-weight: 500;
+    text-align: center;
   }
 
   .artist {
     font-weight: 300;
     color: rgba(255, 255, 255, 0.8);
     font-size: 0.9em;
+    text-align: center;
   }
 
   em {
@@ -96,9 +123,14 @@ button {
 }
 
 .cover {
-  width: $size;
-  height: $size;
+  width: 40%;
+  height: auto;
   z-index: 1;
+  margin: 3rem auto 0;
+
+  &:hover .playback-button {
+    opacity: 1;
+  }
 }
 
 .background {
@@ -113,13 +145,30 @@ button {
   flex-wrap: wrap;
   align-items: flex-start;
   width: 100%;
+  min-height: 100%;
   background-color: black;
 
+  will-change: transform;
+
   img {
-    transform: translateY(-50%);
+    transform: translate(-17%, -17%);
     filter: blur(10px);
-    width: 200%;
-    height: $size * 2;
-    opacity: 0.65;
+    width: 150%;
+    height: 150%;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
+}
+
+.preview-spectrum {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  z-index: -1;
+  height: 90px;
+  width: 100%;
 }

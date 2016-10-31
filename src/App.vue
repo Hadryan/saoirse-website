@@ -39,16 +39,25 @@ body {
 h1 {
   font-weight: 300;
   text-align: center;
+  font-family: 'Marck Script', cursive;
+  font-size: 3rem;
+  margin-bottom: .5rem;
 }
 
 p {
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   max-width: 500px;
   margin: 0 auto;
 }
 
 input:-webkit-autofill {
   background: none !important;
+}
+
+@media (max-width: 800px) {
+  .app {
+    margin: 1rem;
+  }
 }
 </style>
