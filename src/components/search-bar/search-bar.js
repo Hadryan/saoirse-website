@@ -18,13 +18,21 @@ export default {
         {
           name: 'Apple Music / iTunes',
           value: 'itunes'
+        },
+        {
+          name: 'Deezer',
+          value: 'deezer'
+        },
+        {
+          name: 'ISRC',
+          value: 'isrc'
         }
       ]
     }
   },
   methods: {
     parseLocationHash () {
-      const supportedServices = ['spotify', 'isrc', 'itunes', 'apple-music', 'tidal'];
+      const supportedServices = ['spotify', 'isrc', 'itunes', 'apple-music', 'tidal', 'isrc', 'deezer'];
       const supportedTypes = ['track'];
 
       if (!document.location.pathname || document.location.pathname.indexOf('/') === -1) {
