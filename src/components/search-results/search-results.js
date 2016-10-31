@@ -15,17 +15,19 @@ export default {
     return {
       search: undefined,
       tidalUrl: '',
-      spotifyUrl: ''
+      spotifyUrl: '',
+      deezerUrl: ''
     }
   },
   methods: {
     updateSearchResult (json) {
       this.search = Object.assign({}, this.search, json);
 
-      const { tidal_id, spotify_id } = this.search;
+      const { tidal_id, spotify_id, deezer_id } = this.search;
 
       this.tidalUrl = `https://listen.tidal.com/track/${tidal_id}?play=true`;
       this.spotifyUrl = `https://play.spotify.com/track/${spotify_id}?play=true`;
+      this.deezerUrl = `https://www.deezer.com/track/${deezer_id}`;
     }
   },
   mounted () {
