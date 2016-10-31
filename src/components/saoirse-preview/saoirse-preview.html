@@ -1,7 +1,9 @@
-<div class="result-card">
+<div v-bind:class="classes">
   <div class="progress-bar">
     <div class="bar" v-bind:style="progressStyle"></div>
   </div>
+
+  <div class="loader" v-if="this.loading"></div>
 
   <figure class="background" tabindex="-1">
     <img v-bind:src="backgroundSrc" alt="Background image for search result" />

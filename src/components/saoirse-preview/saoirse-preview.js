@@ -19,7 +19,8 @@ export default {
       backgroundSrc: undefined,
       songName: undefined,
       spotifyId: undefined,
-      audio: document.createElement('audio')
+      audio: document.createElement('audio'),
+      loading: false
     };
   },
   methods: {
@@ -46,6 +47,8 @@ export default {
         return;
       }
 
+      this.loading = true;
+      this.audio.pause();
 
       Search.getSpotifyTrack(this.title).then(json => {
         this.songName = json.name;
@@ -67,6 +70,7 @@ export default {
         this.currentPlayButtonIcon = pausedIcon;
         this.progressPercent = 100;
         this.audio.src = URL.createObjectURL(blob);
+        this.loading = false;
       });
     }
   },
@@ -74,6 +78,10 @@ export default {
     progressStyle () {
       const value = Math.abs(100 - this.progressPercent);
       return `transform: translateX(-${value}%)`;
+    },
+    classes () {
+      const additionalClass = this.loading ? ' loading': '';
+      return `result-card${additionalClass}`;
     }
   },
   mounted () {

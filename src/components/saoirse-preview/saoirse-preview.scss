@@ -4,8 +4,62 @@
   flex-flow: column nowrap;
   overflow: hidden;
   margin: 2rem auto;
-  background-color: white;
+  background-color: black;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.loading {
+  pointer-events: none;
+
+  .background,
+  .cover {
+    opacity: 0.3;
+  }
+}
+
+.loader {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #F8E71C;
+  width: 10px;
+  height: 10px;
+  margin: 0 auto;
+  border-radius: 50%;
+
+  &:after, &:before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+
+  &:after {
+    left: -10px;
+    top: -5px;
+    background-color: #C7C2A6;
+    transform-origin: 15px 10px;
+    animation: axis 1s linear infinite;
+  }
+  &:before {
+    left: -25px;
+    top: -15px;
+    background-color: transparent;
+    transform-origin: 30px 20px;
+    animation: axis 2s linear infinite;
+  }
+}
+
+@keyframes axis {
+  0% {
+    transform: rotateZ(0deg) translate3d(0,0,0);
+  }
+  100% {
+    transform: rotateZ(360deg) translate3d(0,0,0);
+  }
 }
 
 figure {
