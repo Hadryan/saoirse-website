@@ -5,7 +5,7 @@
 
   <div class="loader" v-if="this.loading"></div>
 
-  <figure class="background" tabindex="-1">
+  <figure v-bind:class="backgroundClasses" tabindex="-1">
     <img v-bind:src="backgroundSrc" alt="Background image for search result" />
   </figure>
 

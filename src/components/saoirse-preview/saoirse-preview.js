@@ -20,7 +20,8 @@ export default {
       songName: undefined,
       spotifyId: undefined,
       audio: document.createElement('audio'),
-      loading: false
+      loading: false,
+      playing: false
     };
   },
   methods: {
@@ -31,8 +32,10 @@ export default {
       this.currentPlayButtonIcon = this.audio.paused ? pausedIcon : playingIcon;
 
       if (this.audio.paused) {
+        this.playing = false;
         this.$refs.spectrum.stopVisuals();
       } else {
+        this.playing = true;
         this.$refs.spectrum.startVisuals();
       }
     },
@@ -80,8 +83,21 @@ export default {
       return `transform: translateX(-${value}%)`;
     },
     classes () {
-      const additionalClass = this.loading ? ' loading': '';
-      return `result-card${additionalClass}`;
+      const additionalClasses = [];
+
+      if (this.loading) {
+        additionalClasses.push('loading');
+      } else if (this.playing) {
+        additionalClasses.push('playing');
+      }
+
+      const classes = ' ' + additionalClasses.join(' ');
+
+      return `result-card${classes}`;
+    },
+    backgroundClasses () {
+      const additionalClass = this.audio.paused ? ' playing': '';
+      return `background${additionalClass}`;
     }
   },
   mounted () {

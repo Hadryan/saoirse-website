@@ -64,7 +64,6 @@
 
 figure {
   margin: 0;
-  overflow: hidden;
   position: relative;
 
   img {
@@ -84,6 +83,11 @@ figure {
   left: 0;
   right: 0;
   z-index: 99;
+
+  .playing & .bar {
+    will-change: transform;
+    transition: all 50ms linear;
+  }
 
   .bar {
     height: 100%;
@@ -182,6 +186,10 @@ button {
   z-index: 1;
   margin: 3rem auto 0;
 
+  img {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+  }
+
   &:hover .playback-button {
     opacity: 1;
   }
@@ -202,14 +210,16 @@ button {
   min-height: 100%;
   background-color: black;
 
-  will-change: transform;
+  .playing & {
+    will-change: transform;
+  }
 
   img {
     transform: translate(-17%, -17%);
-    filter: blur(10px);
+    filter: blur(25px) saturate(150%);
     width: 150%;
     height: 150%;
-    opacity: 0.5;
+    opacity: 0.4;
     position: absolute;
     top: 0;
     left: 0;
