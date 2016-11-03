@@ -51,6 +51,8 @@ export default {
       }
 
       this.loading = true;
+      this.playing = false;
+      this.$refs.spectrum.stopVisuals();
       this.audio.pause();
 
       Search.getSpotifyTrack(this.title).then(json => {

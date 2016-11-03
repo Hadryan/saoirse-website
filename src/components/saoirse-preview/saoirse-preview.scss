@@ -86,7 +86,6 @@ figure {
 
   .playing & .bar {
     will-change: transform;
-    transition: all 50ms linear;
   }
 
   .bar {

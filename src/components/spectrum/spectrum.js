@@ -37,7 +37,7 @@ export default {
       const fdMin = Math.min.apply(Math, frequencyData);
       const fdMax = Math.max.apply(Math, frequencyData);
 
-      for (let increment = 0; increment < bufferLength; increment++) {
+      for (let increment = 0; x < canvas.width; increment += 2) {
         frequencyHeight = frequencyData[increment] * (canvas.height / 250);
 
         if (increment < 15) {
@@ -47,6 +47,7 @@ export default {
         fd.push(frequencyData[increment]);
 
         frequencyHeight = ScaleBar.get(fdMin, fdMax, frequencyData[increment]);
+        frequencyHeight = frequencyData[increment];
         canvasContext.fillStyle = '#fff';
 
         let y = canvas.height - frequencyHeight;
@@ -55,7 +56,7 @@ export default {
         y = y < 0 ? 0 : y;
 
         canvasContext.fillRect(x, y, frequencyWidth, canvas.height);
-        x += frequencyWidth * 2;
+        x += frequencyWidth * 3;
       }
 
       let scale = (scales.reduce((pv, cv) => (pv + cv), 0) / scales.length) * 0.5;
@@ -68,7 +69,9 @@ export default {
       rafCall = requestAnimationFrame(this.startVisuals);
     },
     stopVisuals () {
-      cancelAnimationFrame(rafCall);
+      setTimeout(() => {
+        cancelAnimationFrame(rafCall);
+      }, 1000);
     }
   },
   mounted () {
@@ -91,7 +94,7 @@ export default {
 
     source.connect(analyser);
     analyser.connect(audioContext.destination);
-    analyser.fftSize = 1024;
+    analyser.fftSize = 2048;
     analyser.minDecibels = -90;
     analyser.maxDecibels = 0;
 
