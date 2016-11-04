@@ -37,7 +37,7 @@ export default {
       const fdMin = Math.min.apply(Math, frequencyData);
       const fdMax = Math.max.apply(Math, frequencyData);
 
-      for (let increment = 0; x < canvas.width; increment += 2) {
+      for (let increment = 0; x < canvas.width; increment++) {
         frequencyHeight = frequencyData[increment] * (canvas.height / 250);
 
         if (increment < 15) {
@@ -70,8 +70,9 @@ export default {
     },
     stopVisuals () {
       setTimeout(() => {
+        canvasContext.clearRect(0, 0, canvas.width, canvas.height);
         cancelAnimationFrame(rafCall);
-      }, 1000);
+      }, 2000);
     }
   },
   mounted () {
@@ -94,7 +95,7 @@ export default {
 
     source.connect(analyser);
     analyser.connect(audioContext.destination);
-    analyser.fftSize = 2048;
+    analyser.fftSize = 4096;
     analyser.minDecibels = -90;
     analyser.maxDecibels = 0;
 
