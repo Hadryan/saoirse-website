@@ -69,10 +69,7 @@ export default {
       rafCall = requestAnimationFrame(this.startVisuals);
     },
     stopVisuals () {
-      setTimeout(() => {
-        canvasContext.clearRect(0, 0, canvas.width, canvas.height);
-        cancelAnimationFrame(rafCall);
-      }, 2000);
+      cancelAnimationFrame(rafCall);
     }
   },
   mounted () {

@@ -234,4 +234,12 @@ button {
   z-index: -1;
   height: 90px;
   width: 100%;
+
+  transform: translateY(90px);
+  transition: all 600ms ease-out;
+
+  .playing & {
+    transform: none;
+    transition: all 300ms ease;
+  }
 }
