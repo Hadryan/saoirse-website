@@ -15,12 +15,12 @@ export default {
   props: ['id'],
   computed: {
     src () {
-      return `https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=tracks&id=${this.id}&app_id=1`
+      return `https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=tracks&id=${this.id}&app_id=1`;
     },
     validId () {
       return !this.id || this.id !== 'N/A';
     }
   }
-}
+};
 </script>
 

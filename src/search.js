@@ -1,5 +1,7 @@
 import 'whatwg-fetch';
 
+/* globals fetch */
+
 export default {
   /**
   * Get trackId from service.
@@ -28,6 +30,7 @@ export default {
 
   getSpotifyTrack (trackId) {
     const apiUrl = `https://api.spotify.com/v1/tracks/${trackId}`;
+
     return fetch(apiUrl).then(response => response.json());
   }
-}
+};

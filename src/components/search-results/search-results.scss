@@ -27,3 +27,12 @@ table {
     padding-left: 0;
   }
 }
+
+@media (max-width: 400px) {
+  thead {
+    display: none;
+  }
+  table td {
+    display: block;
+  }
+}

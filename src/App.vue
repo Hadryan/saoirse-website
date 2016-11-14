@@ -1,9 +1,5 @@
 <template>
   <div class="app">
-    <h1>Saoirse</h1>
-    <p>
-      Saoirse is the irish word for "freedom". This tool help you find your favourite tracks on other music streaming services. Free the music!
-    </p>
     <SearchBar></SearchBar>
     <SearchResults></SearchResults>
   </div>
@@ -18,46 +14,5 @@ export default {
     SearchBar,
     SearchResults
   }
-}
+};
 </script>
-
-<style>
-html {
-  font-family: 'Roboto', sans-serif;
-}
-
-body {
-  margin: 0;
-  background-color: #eee;
-}
-
-.app {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-h1 {
-  font-weight: 300;
-  text-align: center;
-  font-family: 'Marck Script', cursive;
-  font-size: 3rem;
-  margin-bottom: .5rem;
-}
-
-p {
-  text-align: center;
-  font-size: 0.8rem;
-  max-width: 500px;
-  margin: 0 auto;
-}
-
-input:-webkit-autofill {
-  background: none !important;
-}
-
-@media (max-width: 800px) {
-  .app {
-    margin: 1rem;
-  }
-}
-</style>

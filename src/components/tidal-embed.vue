@@ -21,7 +21,7 @@ export default {
       return `https://embed.tidal.com/v0.6.11/index.html?pid=0&type=t&id=${this.id}&relatedId=&token=&custom=`;
     }
   }
-}
+};
 </script>
 
 <style scoped>

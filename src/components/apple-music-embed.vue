@@ -15,11 +15,11 @@ export default {
   props: ['id'],
   computed: {
     src () {
-      return `//tools.applemusic.com/embed/v1/song/${this.id}?country=us`
+      return `//tools.applemusic.com/embed/v1/song/${this.id}?country=us`;
     },
     validId () {
       return !this.id || this.id !== 'N/A';
     }
   }
-}
+};
 </script>

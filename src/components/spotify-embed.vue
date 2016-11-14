@@ -6,22 +6,22 @@
 </template>
 
 <script>
-  import ServiceError from './service-error';
+import ServiceError from './service-error';
 
-  export default {
-    components: {
-      ServiceError
+export default {
+  components: {
+    ServiceError
+  },
+  props: ['id'],
+  computed: {
+    src () {
+      return `https://open.spotify.com/embed/track/${this.id}`;
     },
-    props: ['id'],
-    computed: {
-      src () {
-        return `https://open.spotify.com/embed/track/${this.id}`
-      },
-      validId () {
-        return !this.id || this.id !== 'N/A';
-      }
+    validId () {
+      return !this.id || this.id !== 'N/A';
     }
   }
+};
 </script>
 
 <style scoped>

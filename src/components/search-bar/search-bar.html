@@ -1,8 +1,14 @@
 <form class="search-form" v-on:submit="search">
-  <label for="service">Select service:</label>
-  <select id="service" v-model="service">
-    <option v-for="service in services" v-bind:value="service.value">{{service.name}}</option>
-  </select>
-  <input type="search" name="search" placeholder="Type in track id..." v-model="id" />
-  <button type="submit">Free the music</button>
+  <div class="row">
+    <label for="service">Select service:</label>
+    <select id="service" v-model="service">
+      <option v-for="service in services" v-bind:value="service.value">{{service.name}}</option>
+    </select>
+  </div>
+  <div class="row">
+    <input type="search" name="search" placeholder="Type in track id..." v-model="id">
+  </div>
+  <div class="row">
+    <button type="submit">Free the music</button>
+  </div>
 </form>

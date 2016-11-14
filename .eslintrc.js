@@ -1,4 +1,5 @@
 module.exports = {
+  extends: 'tidal/esnext',
   root: true,
   parser: 'babel-eslint',
   parserOptions: {
