@@ -1,14 +1,19 @@
-'use strict';
+/* eslint-env node */
 
-let express = require('express');
-let serveStatic = require('serve-static');
-let app = express();
-let port = process.env.PORT || 3000;
+const path = require('path');
+const express = require('express');
+const serveStatic = require('serve-static');
+const app = express();
+const port = process.env.PORT || 3000;
 
-app.use(serveStatic(__dirname + '/dist'));
-app.get('*', function(req, res){
-  res.sendFile('dist/index.html', { root: __dirname })
+const distFolderPath = path.join(__dirname, '/dist');
+
+app.use(serveStatic(distFolderPath));
+
+app.get('*', (req, res) => {
+  res.sendFile('dist/index.html', { root: __dirname });
 });
+
 app.listen(port);
 
 console.log('Running on http://localhost:' + port);

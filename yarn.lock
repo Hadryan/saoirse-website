@@ -1693,7 +1693,7 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
-express@latest:
+express@^4.14.0:
   version "4.14.0"
   resolved "https://registry.yarnpkg.com/express/-/express-4.14.0.tgz#c1ee3f42cdc891fb3dc650a8922d51ec847d0d66"
   dependencies:
@@ -4408,9 +4408,9 @@ vue-hot-reload-api@^2.0.1:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.6.tgz#817d4bfb30f55428aa1012d029499e07f3147d21"
 
-vue-loader@^9.4.0:
-  version "9.7.0"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-9.7.0.tgz#9a7573c96fe17ca312c18e2ee1aff54e4d6a71f3"
+vue-loader:
+  version "9.9.0"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-9.9.0.tgz#cf4d9fddd5ef22e0d1642153f4722fb310001c80"
   dependencies:
     consolidate "^0.14.0"
     hash-sum "^1.0.2"
@@ -4423,8 +4423,8 @@ vue-loader@^9.4.0:
     source-map "^0.5.6"
     vue-hot-reload-api "^2.0.1"
     vue-style-loader "^1.0.0"
-    vue-template-compiler "^2.0.0-rc.3"
-    vue-template-es2015-compiler "^1.0.0"
+    vue-template-compiler "^2.0.5"
+    vue-template-es2015-compiler "^1.2.2"
 
 vue-style-loader@^1.0.0:
   version "1.0.0"
@@ -4432,20 +4432,20 @@ vue-style-loader@^1.0.0:
   dependencies:
     loader-utils "^0.2.7"
 
-vue-template-compiler@^2.0.0-rc.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.0.3.tgz#da1462e7c95afb2daa20065e97589d8125226027"
+vue-template-compiler@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.0.5.tgz#6a8c454e7d4ed03cc295ae9733a432e31df25ea3"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
 
-vue-template-es2015-compiler@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.1.1.tgz#ae1ddcf9f6c7eb95df304560ba9a803f3ec9ffb4"
+vue-template-es2015-compiler@^1.2.2:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.2.3.tgz#59695cb1d74f8a575b28e7afe82ce1828200899f"
 
-vue@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.0.3.tgz#3f7698f83d6ad1f0e35955447901672876c63fde"
+vue@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.0.5.tgz#b99dc7180a802d1148a508db3d84b52c09b5ca8e"
 
 watchpack@^0.2.1:
   version "0.2.9"
