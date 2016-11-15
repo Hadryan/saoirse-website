@@ -1,9 +1,12 @@
+import 'whatwg-fetch';
 import Search from '../../search';
 import Spectrum from '../spectrum/spectrum.vue';
-import eventEmitter from '../../event-emitter';
 
 const playingIcon = 'pause';
 const pausedIcon = 'play_arrow';
+
+/* eslint-env browser */
+/* globals fetch */
 
 export default {
   props: ['title'],
@@ -26,7 +29,11 @@ export default {
   },
   methods: {
     toggleAudioPlayback () {
-      this.audio.paused ? this.audio.play() : this.audio.pause();
+      if (this.audio.paused) {
+        this.audio.play();
+      } else {
+        this.audio.pause();
+      }
     },
     updateStates () {
       this.currentPlayButtonIcon = this.audio.paused ? pausedIcon : playingIcon;
@@ -46,7 +53,10 @@ export default {
       this.progressPercent = percent;
     },
     updateContent () {
-      if (!this.title || this.songName && this.title === this.spotifyId) {
+      const noTitle = !this.title;
+      const cannotUpdate = this.songName && this.title === this.spotifyId;
+
+      if (noTitle || cannotUpdate) {
         return;
       }
 
@@ -82,6 +92,7 @@ export default {
   computed: {
     progressStyle () {
       const value = Math.abs(100 - this.progressPercent);
+
       return `transform: translateX(-${value}%)`;
     },
     classes () {
@@ -98,7 +109,8 @@ export default {
       return `result-card${classes}`;
     },
     backgroundClasses () {
-      const additionalClass = this.audio.paused ? ' playing': '';
+      const additionalClass = this.audio.paused ? ' playing' : '';
+
       return `background${additionalClass}`;
     }
   },
@@ -112,4 +124,4 @@ export default {
 
     this.$watch('title', () => this.updateContent())
   }
-}
+};

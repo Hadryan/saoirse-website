@@ -4,6 +4,9 @@ import TidalEmbed from '../tidal-embed';
 import SpotifyEmbed from '../spotify-embed';
 import DeezerEmbed from '../deezer-embed';
 import eventEmitter from '../../event-emitter';
+import Search from '../../search';
+
+/* eslint camelcase: 1 */
 
 export default {
   components: {
@@ -19,13 +22,17 @@ export default {
       tidalUrl: '',
       spotifyUrl: '',
       deezerUrl: ''
-    }
+    };
   },
   methods: {
     updateSearchResult (json) {
       this.search = Object.assign({}, this.search, json);
 
-      const { tidal_id, spotify_id, deezer_id } = this.search;
+      const { tidal_id, spotify_id, deezer_id, itunes_id } = this.search;
+
+      Search.getItunesTrack(itunes_id).then(response => {
+        this.itunesUrl = response.results[0].trackViewUrl;
+      });
 
       this.tidalUrl = `https://listen.tidal.com/track/${tidal_id}?play=true`;
       this.spotifyUrl = `https://play.spotify.com/track/${spotify_id}?play=true`;
@@ -35,4 +42,4 @@ export default {
   mounted () {
     eventEmitter.$on('update-search-result', this.updateSearchResult);
   }
-}
+};

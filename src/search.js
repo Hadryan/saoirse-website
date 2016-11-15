@@ -32,5 +32,11 @@ export default {
     const apiUrl = `https://api.spotify.com/v1/tracks/${trackId}`;
 
     return fetch(apiUrl).then(response => response.json());
+  },
+
+  getItunesTrack (trackId) {
+    const apiUrl = `https://cors.dokku.website/itunes.apple.com/lookup?id=${trackId}&entity=musicTrack`;
+
+    return fetch(apiUrl).then(response => response.json());
   }
 };
