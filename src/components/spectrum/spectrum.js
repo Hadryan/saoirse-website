@@ -1,7 +1,9 @@
+/* eslint-env browser */
+
 const ScaleBar = {
   min: 5,
   max: 0,
-  get: function (fromMin, fromMax, valueIn) {
+  get (fromMin, fromMax, valueIn) {
     const toMax = ScaleBar.max;
     const toMin = ScaleBar.min;
 
@@ -11,14 +13,13 @@ const ScaleBar = {
   }
 };
 
-let canvas
-  , canvasContext
-  , analyser
-  , rafCall
-  , bufferLength
-  , frequencyData
-  , circle
-  ;
+let canvas;
+let canvasContext;
+let analyser;
+let rafCall;
+let bufferLength;
+let frequencyData;
+let circle;
 
 export default {
   props: ['audioElement'],
@@ -27,12 +28,12 @@ export default {
       canvasContext.clearRect(0, 0, canvas.width, canvas.height);
       analyser.getByteFrequencyData(frequencyData);
 
-      let frequencyWidth = window.devicePixelRatio
-        , frequencyHeight = 0
-        , x = 0
-        , scales = []
-        , fd = []
-        ;
+      let frequencyHeight = 0;
+      let x = 0;
+
+      const frequencyWidth = window.devicePixelRatio * 2;
+      const scales = [];
+      const fd = [];
 
       const fdMin = Math.min.apply(Math, frequencyData);
       const fdMax = Math.max.apply(Math, frequencyData);
@@ -56,7 +57,7 @@ export default {
         y = y < 0 ? 0 : y;
 
         canvasContext.fillRect(x, y, frequencyWidth, canvas.height);
-        x += frequencyWidth * 3;
+        x += frequencyWidth * 2;
       }
 
       let scale = (scales.reduce((pv, cv) => (pv + cv), 0) / scales.length) * 0.5;
@@ -64,7 +65,7 @@ export default {
       scale = scale < 1 ? 1 : scale;
       scale = scale > 3 ? 3 : scale;
 
-      circle.style.transform = 'scale('+ scale +')';
+      circle.style.transform = `scale(${scale})`;
 
       rafCall = requestAnimationFrame(this.startVisuals);
     },

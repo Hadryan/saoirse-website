@@ -21,7 +21,8 @@ export default {
       search: undefined,
       tidalUrl: '',
       spotifyUrl: '',
-      deezerUrl: ''
+      deezerUrl: '',
+      itunesUrl: ''
     };
   },
   methods: {
@@ -29,6 +30,8 @@ export default {
       this.search = Object.assign({}, this.search, json);
 
       const { tidal_id, spotify_id, deezer_id, itunes_id } = this.search;
+
+      this.itunesUrl = '';
 
       Search.getItunesTrack(itunes_id).then(response => {
         this.itunesUrl = response.results[0].trackViewUrl;

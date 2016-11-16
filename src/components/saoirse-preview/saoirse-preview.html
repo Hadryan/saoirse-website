@@ -9,20 +9,22 @@
     <img v-bind:src="backgroundSrc" alt="Background image for search result" />
   </figure>
 
-  <figure class="cover">
-    <img v-bind:srcset="imageSourceSet" alt="Image for search result" />
-    <button v-on:click="toggleAudioPlayback" class="playback-button">
-      <i class="material-icons">{{currentPlayButtonIcon}}</i>
-    </button>
-  </figure>
+  <div class="center">
+    <figure class="cover">
+      <img v-bind:srcset="imageSourceSet" alt="Image for search result" />
+      <button v-on:click="toggleAudioPlayback" class="playback-button">
+        <i class="material-icons">{{currentPlayButtonIcon}}</i>
+      </button>
+    </figure>
 
-  <div class="right">
     <div class="metadata">
       <span class="name">{{songName}}</span>
       <span class="artist">{{artistList}}</span>
       <!--<em>Playback powered by Spotify</em>-->
     </div>
+  </div>
 
+  <div class="right">
     <Spectrum v-bind:audioElement="audio" class="preview-spectrum" ref="spectrum"></Spectrum>
   </div>
 </div>
